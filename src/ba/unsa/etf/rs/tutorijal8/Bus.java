@@ -1,95 +1,105 @@
 package ba.unsa.etf.rs.tutorijal8;
 
 public class Bus {
-    private Integer idBus = null;
-    private String maker, series;
-    private int seatNumber;
-    private Driver driverOne = null;
-    private Driver driverTwo = null;
+    private int id;
+    private String proizvodjac;
+    private String serija;
+    private int numberOfSeats;
+    private int numberOfDrivers;
+    private Driver FirstDriver = null;
+    private Driver SecondDriver = null;
 
-
-public Bus(String maker, String series, int seatNumber){
-    this.maker = maker;
-    this.series = series;
-    this.seatNumber = seatNumber;
-}
-
-public Bus(Integer idBus, String maker, String series, int seatNumber){
-    this.idBus = idBus;
-    this.maker = maker;
-    this.series = series;
-    this.seatNumber = seatNumber;
-}
-
-    public Bus() {
+    public void setFirstDriver(Driver firstDriver) {
+        FirstDriver = firstDriver;
     }
 
-    public Integer getIdBus() {
-        return idBus;
+    public void setSecondDriver(Driver secondDriver) {
+        SecondDriver = secondDriver;
     }
 
-    public void setIdBus(Integer idBus) {
-        this.idBus = idBus;
+    public Bus(){ }
+
+    public Bus(String proizvodjac, String serija, int numberOfSeats) {
+        this.proizvodjac = proizvodjac;
+        this.serija = serija;
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public Bus( int Id, String proizvodjac, String serija, int numberOfSeats) {
+        id = Id;
+        this.proizvodjac = proizvodjac;
+        this.serija = serija;
+        this.numberOfSeats = numberOfSeats;
+
+    }
+    public Bus(int Id, String proizvodjac, String serija, int numberOfSeats, Driver firstDriver, Driver secondDriver) {
+        id = Id;
+        this.proizvodjac = proizvodjac;
+        this.serija = serija;
+        this.numberOfSeats = numberOfSeats;
+
+        FirstDriver = firstDriver;
+        SecondDriver = secondDriver;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMaker() {
-        return maker;
+        return proizvodjac;
     }
 
-    public void setMaker(String maker) {
-        this.maker = maker;
+    public void setProizvodjac(String proizvodjac) {
+        this.proizvodjac = proizvodjac;
     }
 
-    public String getSeries() {
-        return series;
+    public String getSerija() {
+        return serija;
     }
 
-    public void setSeries(String series) {
-        this.series = series;
+    public void setSerija(String serija) {
+        this.serija = serija;
     }
 
     public int getSeatNumber() {
-        return seatNumber;
+        return numberOfSeats;
     }
 
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public int getNumberOfDrivers() {
+        return numberOfDrivers;
+    }
+
+    public void setNumberOfDrivers(int numberOfDrivers) {
+        this.numberOfDrivers = numberOfDrivers;
     }
 
     public Driver getDriverOne() {
-        return driverOne;
-    }
-
-    public void setDriverOne(Driver driverOne) {
-        this.driverOne = driverOne;
+        return FirstDriver;
     }
 
     public Driver getDriverTwo() {
-        return driverTwo;
-    }
-
-    public void setDriverTwo(Driver driverTwo) {
-        this.driverTwo = driverTwo;
+        return SecondDriver;
     }
 
     @Override
     public String toString() {
-        String ime = "";
-        ime += this.maker + " " + this.series + " (br. sjedista: " + this.getSeatNumber() + " )";
-        if(driverOne != null){
-            ime += driverOne.toString();
+        String ispisBusa = "";
+        ispisBusa += this.proizvodjac + " " + this.serija + " ( seats: " + this.getSeatNumber() + " )";
+        if (FirstDriver != null) {
+            ispisBusa += FirstDriver.toString();
         }
-        if(driverTwo != null){
-            ime += driverTwo.toString();
+        if (SecondDriver != null) {
+            ispisBusa += SecondDriver.toString();
         }
-        return ime;
+        return ispisBusa;
     }
-
-    public boolean equals (Bus bus){
-    if(idBus != null) {
-        return (bus.getIdBus().equals(this.getIdBus()));
-    }
-        return false;
-    }
-
 }

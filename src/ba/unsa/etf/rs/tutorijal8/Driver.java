@@ -1,91 +1,94 @@
 package ba.unsa.etf.rs.tutorijal8;
 
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Driver {
+  private int id;
+  private String Ime;
+  private String Prezime;
+  private String JMB;
+  private LocalDate BirthDate;
+  private LocalDate WorkDate;
 
-  private Integer idDriver = null;
-  private String firstName, lastName, jmb;
-  private LocalDate birthdate, hireDate;
+  public Driver() { }
 
-
-  public Driver() {
+  public Driver(String ime, String prezime, String JMB, LocalDate birthDate, LocalDate workDate) {
+    this.Ime = ime;
+    Prezime = prezime;
+    this.JMB = JMB;
+    BirthDate = birthDate;
+    WorkDate = workDate;
   }
 
-  public Driver(String firstName, String lastName, String jmb, LocalDate birthdate, LocalDate hireDate){
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.jmb = jmb;
-    this.birthdate = birthdate;
-    this.hireDate = hireDate;
+  public Driver(int id , String ime, String prezime, String JMB, LocalDate birthDate, LocalDate workDate) {
+    this.id = id;
+    this.Ime = ime;
+    Prezime = prezime;
+    this.JMB = JMB;
+    BirthDate = birthDate;
+    WorkDate = workDate;
   }
 
-  public Driver(Integer idDriver, String firstName, String lastName, String jmb, LocalDate birthdate, LocalDate hireDate){
-    this.idDriver = idDriver;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.jmb = jmb;
-    this.birthdate = birthdate;
-    this.hireDate = hireDate;
+  public int getId() {
+    return id;
   }
 
-  public Integer getIdDriver() {
-    return idDriver;
+  public void setId(int id) {
+    this.id = id;
   }
 
-  public void setIdDriver(Integer idDriver) {
-    this.idDriver = idDriver;
+  public String getName() {
+    return Ime;
   }
 
-  public String getFirstName() {
-    return firstName;
+  public void setIme(String ime) {
+    Ime = ime;
   }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
+  public String getPrezime() {
+    return Prezime;
   }
 
-  public String getLastName() {
-    return lastName;
+  public void setPrezime(String prezime) {
+    Prezime = prezime;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
+  public String getJMB() {
+    return JMB;
   }
 
-  public String getJmb() {
-    return jmb;
+  public void setJMB(String JMB) {
+    this.JMB = JMB;
   }
 
-  public void setJmb(String jmb) {
-    this.jmb = jmb;
+  public LocalDate getBirthday() {
+    return BirthDate;
   }
 
-  public LocalDate getBirthdate() {
-    return birthdate;
+  public void setBirthDate(LocalDate birthDate) {
+    BirthDate = birthDate;
   }
 
-  public void setBirthdate(LocalDate birthdate) {
-    this.birthdate = birthdate;
+  public LocalDate getWorkDate() {
+    return WorkDate;
   }
 
-  public LocalDate getHireDate() {
-    return hireDate;
-  }
-
-  public void setHireDate(LocalDate hireDate) {
-    this.hireDate = hireDate;
+  public void setWorkDate(LocalDate workDate) {
+    WorkDate = workDate;
   }
 
   @Override
   public String toString() {
-    return " -> (" + this.getFirstName() + " " + this.getLastName() + " ( " + this.getJmb() + " ))";
+    return  " - (" + this.getName() + " " + this.getPrezime() + " ( " + this.getJMB() + " ))";
   }
 
-  public boolean equals (Driver driver){
-    return (driver.getJmb().equals(this.getJmb()));
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Driver)) return false;
+    Driver driver = (Driver) o;
+    return Objects.equals(getJMB(), driver.getJMB());
   }
-
 }
-
-
